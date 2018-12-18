@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 
 // Services
 import { PokemonService } from './services/pokemon.service';
+import { GeolocationService } from './services/geolocation.service';
 
 // Repositories
 import { PokemonRepository } from './repositories/PokemonRepository';
@@ -24,10 +25,17 @@ import { PokemonRepository } from './repositories/PokemonRepository';
   providers: [
     PokemonService,
     PokemonRepository,
+    GeolocationService,
     {
       provide: APP_INITIALIZER,
       useFactory: pokemonsLoad,
       deps: [PokemonRepository],
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: geolocationLoad,
+      deps: [GeolocationService],
       multi: true
     }
   ],
@@ -37,4 +45,8 @@ export class AppModule { }
 
 export function pokemonsLoad(pokemonRepository: PokemonRepository) {
   return () => pokemonRepository.init();
+}
+
+export function geolocationLoad(geolocationService: GeolocationService) {
+  return () => geolocationService.getUserLocation();
 }
