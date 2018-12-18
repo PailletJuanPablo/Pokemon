@@ -2,6 +2,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NguiMapModule } from '@ngui/map';
 
 // Components
 import { AppComponent } from './app.component';
@@ -12,20 +13,24 @@ import { GeolocationService } from './services/geolocation.service';
 
 // Repositories
 import { PokemonRepository } from './repositories/PokemonRepository';
+import { LocationRepository } from './repositories/LocationRepository';
 
-
+// Constants
+import { ApiKey } from './constants';
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    NguiMapModule.forRoot({ apiUrl: 'https://maps.google.com/maps/api/js?key=' + ApiKey })
   ],
   providers: [
     PokemonService,
     PokemonRepository,
     GeolocationService,
+    LocationRepository,
     {
       provide: APP_INITIALIZER,
       useFactory: pokemonsLoad,
@@ -35,7 +40,7 @@ import { PokemonRepository } from './repositories/PokemonRepository';
     {
       provide: APP_INITIALIZER,
       useFactory: geolocationLoad,
-      deps: [GeolocationService],
+      deps: [LocationRepository],
       multi: true
     }
   ],
@@ -47,6 +52,6 @@ export function pokemonsLoad(pokemonRepository: PokemonRepository) {
   return () => pokemonRepository.init();
 }
 
-export function geolocationLoad(geolocationService: GeolocationService) {
-  return () => geolocationService.getUserLocation();
+export function geolocationLoad(locationRepository: LocationRepository) {
+  return () => locationRepository.init();
 }

@@ -11,36 +11,33 @@ export class GeolocationService {
   }
 
   getUserLocation() {
-    if ('geolocation' in navigator) {
-      this.getPositionFromBrowser();
-    } else {
-      this.getPositionFromIp().then((response) => {
-        console.log(response);
-      });
-    }
-  }
-
-  getPositionFromBrowser() {
-    // Try to get location from user
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        console.log('latitude', position.coords.latitude,
-          'longitude', position.coords.longitude);
-      },
-      (error) => {
-        console.log(error);
-        // If have a problem, get location from IP
-        this.getPositionFromIp().then((response) => {
-          console.log(response);
-        });
-      });
+    return new Promise((resolve, reject) => {
+      // Get position from browser if support
+      if ('geolocation' in navigator) {
+        // Try to get position from browser
+        navigator.geolocation.getCurrentPosition((position) => {
+          resolve({ lat: position.coords.latitude, lng: position.coords.longitude });
+        },
+          // If got error, get from ip
+          (err) => {
+            this.getPositionFromIp().then((coords) => resolve(coords));
+          }
+        );
+      } else {
+        // If navigator not support geolocation, get from IP directly
+        this.getPositionFromIp().then((coords) => resolve(coords));
+        resolve(true);
+      }
+    });
   }
 
   getPositionFromIp() {
     return new Promise((resolve, reject) => {
       this.http.get('http://www.geoplugin.net/json.gp').toPromise().then((coords: IGeolocationResponse) => {
-        resolve({ lat: coords.geoplugin_latitude, lng: coords.geoplugin_longitude });
-      });
+        resolve({ lat: Number(coords.geoplugin_latitude), lng: Number(coords.geoplugin_longitude) });
+      })
+        .catch((error) => reject(error));
     });
+
   }
 }
