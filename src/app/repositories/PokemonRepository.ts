@@ -16,7 +16,7 @@ export class PokemonRepository {
         .getList()
         .then((response: IReducedPokemon[]) => {
           this.list = response;
-          console.log(this.list)
+          console.log(this.list);
           resolve();
         })
         .catch(error => {
