@@ -24,7 +24,7 @@
                         ],
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.css",
-                            "src/styles.css"
+                            "src/app/styles/styles.scss"
                         ],
                         "scripts": []
                     },
@@ -122,5 +122,10 @@
             }
         }
     },
-    "defaultProject": "pokemon"
+    "defaultProject": "pokemon",
+    "schematics": {
+        "@schematics/angular:component": {
+            "styleext": "scss"
+        }
+    }
 }
