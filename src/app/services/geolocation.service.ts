@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IGeolocationResponse } from '../models';
+import { IGeoPluginresponse } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -33,11 +33,10 @@ export class GeolocationService {
 
   getPositionFromIp() {
     return new Promise((resolve, reject) => {
-      this.http.get('http://www.geoplugin.net/json.gp').toPromise().then((coords: IGeolocationResponse) => {
+      this.http.get('http://www.geoplugin.net/json.gp').toPromise().then((coords: IGeoPluginresponse) => {
         resolve({ lat: Number(coords.geoplugin_latitude), lng: Number(coords.geoplugin_longitude) });
       })
         .catch((error) => reject(error));
     });
-
   }
 }
