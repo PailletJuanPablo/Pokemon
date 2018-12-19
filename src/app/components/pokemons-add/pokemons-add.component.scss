@@ -1,0 +1,12 @@
+$pokeBlue: #3B4CCA;
+$pokeYellow: #FFDE00;
+.pokedexContainer {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    button {
+        width: 100%;
+        color: $pokeBlue;
+        font-size: 35px;
+    }
+}
