@@ -1,0 +1,9 @@
+<div class="mapContainer">
+    <ngui-map [center]="config.latLng" [styles]="config.mapStyle" zoom="16" [disableDefaultUI]="true">
+        <custom-marker [position]="[config.latLng]">
+            <div class="pokeball">
+                <div class="pokeball__button"></div>
+            </div>
+        </custom-marker>
+    </ngui-map>
+</div>
