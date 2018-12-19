@@ -4,9 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { NguiMapModule } from '@ngui/map';
 
-// Components
-import { AppComponent } from './app.component';
-
 // Services
 import { PokemonService } from './services/pokemon.service';
 import { GeolocationService } from './services/geolocation.service';
@@ -17,14 +14,29 @@ import { LocationRepository } from './repositories/LocationRepository';
 
 // Constants
 import { ApiKey } from './constants';
+
+// Components
+import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home/home.component';
+import { MapComponent } from './pages/map/map.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MapComponentComponent } from './components/map-component/map-component.component';
+import { PokemonsAddComponent } from './components/pokemons-add/pokemons-add.component';
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    MapComponent,
+    MapComponentComponent,
+    PokemonsAddComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    NguiMapModule.forRoot({ apiUrl: 'https://maps.google.com/maps/api/js?key=' + ApiKey })
+    NguiMapModule.forRoot({ apiUrl: 'https://maps.google.com/maps/api/js?key=' + ApiKey }),
+    AppRoutingModule
   ],
   providers: [
     PokemonService,
