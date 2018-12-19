@@ -1,0 +1,18 @@
+.homeContainer {
+    text-align: center;
+    background-image: url('/assets/imgs/home.png');
+    background-size: cover;
+    height: 100%;
+    .welcomeTextContainer {
+        padding-top: 25px;
+        #title {
+            font-size: 75px;
+            color: yellow;
+        }
+        #subtitle {
+            color: #ffcb04;
+            text-shadow: 0 0 4px blue;
+        }
+        padding-bottom: 25px;
+    }
+}
