@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'pokeFont';
+    src: url('../../assets/fonts/pokemon_font.ttf');
+}
+
+@font-face {
+    font-family: 'pokeFontSolid';
+    src: url('../../assets/fonts/pokemon_font_solid.ttf');
+}
+
+body {
+    min-height: 100vh;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+p,
+h1 {
+    font-family: 'pokeFont';
+}
+
+.solid {
+    font-family: 'pokeFontSolid'
+}
+
+.gaming {
+    font-family: 'Press Start 2P', cursive;
+}
+
+.game-button {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
+    font-weight: bold;
+    padding: 25px;
+    background-color: lightgray;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: gray;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -o-border-radius: 7px;
+    border-radius: 7px;
+    box-shadow: 0 .2em gray;
+    cursor: pointer;
+    width: 50%;
+}
