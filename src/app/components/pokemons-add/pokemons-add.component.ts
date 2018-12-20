@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PokemonAddPopupComponent } from '../pokemon-add-popup/pokemon-add-popup.component';
 
 @Component({
   selector: 'app-pokemons-add',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonsAddComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
+  }
+
+  open() {
+    this.modalService.open(PokemonAddPopupComponent);
   }
 
 }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MapComponentComponent } from './map-component.component';
+import { PokemonClearComponent } from './pokemon-clear.component';
 
-describe('MapComponentComponent', () => {
-  let component: MapComponentComponent;
-  let fixture: ComponentFixture<MapComponentComponent>;
+describe('PokemonClearComponent', () => {
+  let component: PokemonClearComponent;
+  let fixture: ComponentFixture<PokemonClearComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MapComponentComponent ]
+      declarations: [ PokemonClearComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MapComponentComponent);
+    fixture = TestBed.createComponent(PokemonClearComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

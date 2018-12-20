@@ -15,6 +15,9 @@ export class LocationRepository {
       this.geoLocationService.getUserLocation().then((position: IMapPosition) => {
         this.userPosition = position;
         resolve(true);
+      }).catch((ko) => {
+        alert('KO - Cannot get location anyways');
+        window.close();
       });
     });
   }

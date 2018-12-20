@@ -1,8 +1,13 @@
 <div class="mapContainer">
-    <ngui-map [center]="config.latLng" [styles]="config.mapStyle" zoom="16" [disableDefaultUI]="true">
+    <ngui-map [center]="config.latLng" [styles]="config.mapStyle" zoom="16" [disableDefaultUI]="true" [scrollwheel]="false">
         <custom-marker [position]="[config.latLng]">
             <div class="pokeball">
                 <div class="pokeball__button"></div>
+            </div>
+        </custom-marker>
+        <custom-marker *ngFor="let item of randmonPokemons" [position]="item.latLng">
+            <div class="pokemon-image">
+                <img [src]="item.image">
             </div>
         </custom-marker>
     </ngui-map>

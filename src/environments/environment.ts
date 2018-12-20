@@ -3,8 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
-}
+  production: false,
+  apiUrl: 'http://localhost:4201/',
+  ng2MapsUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyC_vT2hK4QP8VUs63OxavWk56l9jBKNX-o',
+};
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -1,6 +1,6 @@
 export interface IPokemon {
-  id: string;
+  _id: string;
+  num: number;
   name: string;
-  sprite: string;
-  type: string;
+  img: string;
 }

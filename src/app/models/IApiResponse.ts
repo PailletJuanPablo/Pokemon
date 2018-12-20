@@ -1,8 +1,5 @@
-import { IReducedPokemon } from 'src/app/models';
+import { IPokemon } from './IPokemon';
 
 export interface IResponse {
-  count: string;
-  next: string;
-  previous: string;
-  results: Array<IReducedPokemon>;
+  data: Array<IPokemon>;
 }

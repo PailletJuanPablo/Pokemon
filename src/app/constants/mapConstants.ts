@@ -1,5 +1,3 @@
-const ApiKey = 'AIzaSyC_vT2hK4QP8VUs63OxavWk56l9jBKNX-o';
-
 const mapStyle = [
   {
     'featureType': 'administrative',
@@ -339,6 +337,5 @@ const mapStyle = [
   }
 ];
 export {
-  ApiKey,
-  mapStyle
+  mapStyle,
 };

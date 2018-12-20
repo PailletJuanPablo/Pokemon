@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IGeoPluginresponse } from '../models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GeolocationService {
 
+  pluginUrl = 'https://ipapi.co/json/';
   constructor(private http: HttpClient) {
   }
 
@@ -33,10 +33,27 @@ export class GeolocationService {
 
   getPositionFromIp() {
     return new Promise((resolve, reject) => {
-      this.http.get('http://www.geoplugin.net/json.gp').toPromise().then((coords: IGeoPluginresponse) => {
-        resolve({ lat: Number(coords.geoplugin_latitude), lng: Number(coords.geoplugin_longitude) });
+      this.http.get(this.pluginUrl).toPromise().then((coords: any) => {
+        alert('We could not get your location, we will use an approximate');
+        resolve({ lat: Number(coords.latitude), lng: Number(coords.longitude) });
       })
         .catch((error) => reject(error));
     });
+  }
+
+  generateRandomPositionInRadius(lat, lng, radius) {
+    const xAsysUser = lng;
+    const yAsysUser = lat;
+    // Convert Radius from meters to degrees.
+    const radiusInDegrees = radius / 111300;
+    // Generate Random w
+    const w = radiusInDegrees * Math.sqrt(Math.random());
+    // Generate a Random Angle
+    const randomAngle = 2 * Math.PI * Math.random();
+    // Generate x and y axis based on cos of random angle
+    const xAsis = w * Math.cos(randomAngle);
+    const yAsis = w * Math.sin(randomAngle);
+    const xp = xAsis / Math.cos(yAsysUser);
+    return [yAsis + yAsysUser, xp + xAsysUser];
   }
 }

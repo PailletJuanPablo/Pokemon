@@ -2,7 +2,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { NguiMapModule } from '@ngui/map';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Services
 import { PokemonService } from './services/pokemon.service';
@@ -12,47 +12,46 @@ import { GeolocationService } from './services/geolocation.service';
 import { PokemonRepository } from './repositories/PokemonRepository';
 import { LocationRepository } from './repositories/LocationRepository';
 
-// Constants
-import { ApiKey } from './constants';
-
 // Components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { MapComponent } from './pages/map/map.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MapComponentComponent } from './components/map-component/map-component.component';
-import { PokemonsAddComponent } from './components/pokemons-add/pokemons-add.component';
+import { PokemonAddPopupComponent } from './components/pokemon-add-popup/pokemon-add-popup.component';
+import { EventsService } from './services/events-service.service';
+import { MapPageComponent } from './pages/map/map.component';
+import { HomePageComponent } from './pages/home/home.component';
+import { ComponentsModule } from './components/components.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    MapComponent,
-    MapComponentComponent,
-    PokemonsAddComponent
+    MapPageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    NguiMapModule.forRoot({ apiUrl: 'https://maps.google.com/maps/api/js?key=' + ApiKey }),
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    ComponentsModule,
   ],
+  entryComponents: [PokemonAddPopupComponent],
   providers: [
     PokemonService,
     PokemonRepository,
     GeolocationService,
     LocationRepository,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: pokemonsLoad,
-      deps: [PokemonRepository],
-      multi: true
-    },
+    EventsService,
     {
       provide: APP_INITIALIZER,
       useFactory: geolocationLoad,
       deps: [LocationRepository],
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: pokemonsLoad,
+      deps: [PokemonRepository],
       multi: true
     }
   ],
@@ -60,10 +59,10 @@ import { PokemonsAddComponent } from './components/pokemons-add/pokemons-add.com
 })
 export class AppModule { }
 
-export function pokemonsLoad(pokemonRepository: PokemonRepository) {
-  return () => pokemonRepository.init();
-}
-
 export function geolocationLoad(locationRepository: LocationRepository) {
   return () => locationRepository.init();
+}
+
+export function pokemonsLoad(pokemonRepository: PokemonRepository) {
+  return () => pokemonRepository.init();
 }

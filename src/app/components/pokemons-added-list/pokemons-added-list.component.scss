@@ -1,0 +1,27 @@
+.pokeList {
+    background: white;
+}
+
+#addedTitle {
+    color: #ffcb04;
+    text-shadow: 0 0 4px blue;
+    margin-bottom: 25px;
+}
+
+.addedPokemonContainer {
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    img {
+        max-width: 80%
+    }
+    margin-bottom: 10px;
+    &:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        cursor: pointer;
+    }
+}
