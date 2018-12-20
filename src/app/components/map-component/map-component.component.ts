@@ -58,7 +58,6 @@ export class MapComponent {
           const randmonLatLng = this.geolocationService.generateRandomPositionInRadius(userPosition.lat, userPosition.lng, 200);
           const image = pokemon.img;
           this.randmonPokemons.push({ latLng: randmonLatLng, image });
-          console.log(this.randmonPokemons);
         }
         */
 
