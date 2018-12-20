@@ -9,6 +9,7 @@ import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 import { NguiMapModule } from '@ngui/map';
 import { PokemonItemComponent } from './pokemon-item/pokemon-item.component';
 import { environment } from '../../environments/environment';
+import { MusicButtonComponent } from './music-button/music-button.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { environment } from '../../environments/environment';
     PokemonClearComponent,
     PokemonsAddComponent,
     PokemonsAddedListComponent,
-    PokemonItemComponent
+    PokemonItemComponent,
+    MusicButtonComponent
   ],
   exports: [
     MapComponent,
@@ -30,7 +32,8 @@ import { environment } from '../../environments/environment';
     PokemonClearComponent,
     PokemonsAddComponent,
     PokemonsAddedListComponent,
-    PokemonItemComponent
+    PokemonItemComponent,
+    MusicButtonComponent
   ]
 })
 export class ComponentsModule { }

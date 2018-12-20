@@ -14,7 +14,7 @@ export class PokemonClearComponent implements OnInit {
   }
 
   clearPokemons() {
-    this.eventsService.clearPokemons();
+    this.eventsService.sendAction({ type: 'clear' });
   }
 
 }
