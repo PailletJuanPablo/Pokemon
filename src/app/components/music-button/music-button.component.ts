@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./music-button.component.scss']
 })
 export class MusicButtonComponent implements OnInit {
-  musicEnabled: boolean;
+  musicEnabled = true;
   constructor() { }
 
   ngOnInit() {

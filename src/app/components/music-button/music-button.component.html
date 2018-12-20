@@ -1,4 +1,4 @@
 <div class="pokedexContainer">
-    <button class="game-button" (click)="switchMusic()"> Music {{(musicEnabled) ? 'On' : 'Off'}} </button>
+    <button class="game-button" [class.blue]="musicEnabled" (click)="switchMusic()"> Music is {{(musicEnabled) ? 'On' : 'Off'}} </button>
 </div>
 <embed name="bgMusic" *ngIf="musicEnabled" id="backgroundMusic" src="./assets/bgmusic.mp3" height="0" loop="true" autostart="true">

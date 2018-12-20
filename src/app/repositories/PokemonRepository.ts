@@ -25,4 +25,10 @@ export class PokemonRepository {
     });
   }
 
+  public searchByName(nameToSearch: string): Array<IPokemon> {
+    return this.list.filter((pokemon) => {
+      return pokemon.name.toLowerCase().match(nameToSearch);
+    });
+  }
+
 }

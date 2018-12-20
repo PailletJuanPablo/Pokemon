@@ -9,19 +9,15 @@ import { IPokemon } from 'src/app/models';
   styleUrls: ['./pokemon-add-popup.component.scss']
 })
 export class PokemonAddPopupComponent implements OnInit {
-  allPokemonsData: Array<IPokemon>;
-  filteredPokemonData = [];
+  pokemonsList: Array<IPokemon>;
   constructor(public pokemonRepository: PokemonRepository, public http: HttpClient, public activeModal: NgbActiveModal) {
-    this.allPokemonsData = this.pokemonRepository.list;
-    this.filteredPokemonData = this.allPokemonsData;
+    this.pokemonsList = this.pokemonRepository.list;
   }
   ngOnInit() {
   }
   searchPokemon(event) {
     const nameToSearch = event.target.value;
-    this.filteredPokemonData = this.allPokemonsData.filter((pokemon) => {
-      return pokemon.name.toLowerCase().match(nameToSearch);
-    });
+    this.pokemonsList = this.pokemonRepository.searchByName(nameToSearch);
   }
 
 }

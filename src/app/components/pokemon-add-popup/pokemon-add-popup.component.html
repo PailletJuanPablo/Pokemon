@@ -6,7 +6,7 @@
 </div>
 <div class="modal-body">
     <input type="text" class="form-control" placeholder="Search Pokemon..." (keyup)="searchPokemon($event)">
-    <virtual-scroller #scroll [items]="filteredPokemonData">
+    <virtual-scroller #scroll [items]="pokemonsList">
         <app-pokemon-item *ngFor="let pokemon of scroll.viewPortItems" [pokemon]="pokemon">
         </app-pokemon-item>
 

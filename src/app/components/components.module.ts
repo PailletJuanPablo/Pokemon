@@ -10,12 +10,14 @@ import { NguiMapModule } from '@ngui/map';
 import { PokemonItemComponent } from './pokemon-item/pokemon-item.component';
 import { environment } from '../../environments/environment';
 import { MusicButtonComponent } from './music-button/music-button.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     VirtualScrollerModule,
     NguiMapModule.forRoot({ apiUrl: environment.ng2MapsUrl }),
+    FormsModule
   ],
   declarations: [
     MapComponent,

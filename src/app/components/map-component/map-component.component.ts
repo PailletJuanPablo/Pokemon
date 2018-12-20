@@ -46,10 +46,9 @@ export class MapComponent {
 
   setRandomPokemon(pokemon) {
     const userPosition = this.locationRepository.userPosition;
-
-    const randmonLatLng = this.geolocationService.generateRandomPositionInRadius(userPosition.lat, userPosition.lng, 200);
+    const randomLatLng = this.geolocationService.generateRandomPositionInRadius(userPosition.lat, userPosition.lng, 200);
     const image = pokemon.img;
-    this.randmonPokemons.push({ latLng: randmonLatLng, image });
+    this.randmonPokemons.push({ latLng: randomLatLng, image });
 
     // Check Radius
 
@@ -60,9 +59,6 @@ export class MapComponent {
           this.randmonPokemons.push({ latLng: randmonLatLng, image });
         }
         */
-
-
-
   }
 
 }
